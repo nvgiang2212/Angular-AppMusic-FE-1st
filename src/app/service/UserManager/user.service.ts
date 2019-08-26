@@ -9,11 +9,11 @@ import {UpdateInfo} from '../../model/UserManager/Update-Infor';
 })
 export class UserService {
 
-  private userUrl = 'http://localhost:8080/api/users/user';
-  private pmUrl = 'http://localhost:8080/api/users/pm';
-  private adminUrl = 'http://localhost:8080/api/users/admin';
-  private updateUserUrl = 'http://localhost:8080/api/auth/updateuser';
-  private getUserUrl = 'http://localhost:8080/api/auth/user';
+  private userUrl = 'http://localhost:8080/users/user';
+  private pmUrl = 'http://localhost:8080/users/pm';
+  private adminUrl = 'http://localhost:8080/users/admin';
+  private updateUserUrl = 'http://localhost:8080/updateuser';
+  private getUserUrl = 'http://localhost:8080/user';
 
 
   // FIREBASE - API

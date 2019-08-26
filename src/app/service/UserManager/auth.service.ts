@@ -3,6 +3,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {LoginInfo} from '../../model/UserManager/Login-Infor';
 import {JwtResponse} from '../../model/jwt-response';
+import {RegisterInfo} from '../../model/UserManager/Register-Infor';
+import {UpdateInfo} from '../../model/UserManager/Update-Infor';
+import {ChangePassword} from '../../model/UserManager/ChangPass-Infor';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,8 +16,10 @@ const httpOptions = {
 })
 export class AuthService {
 
-  private loginUrl = 'http://localhost:8080/api/auth/signin';
-  private signupUrl = 'http://localhost:8080/api/auth/signup';
+  private loginUrl = 'http://localhost:8080/login';
+  private registerUrl = 'http://localhost:8080/signup';
+  private updateProfileUrl = 'http://localhost:8080/updateuser';
+  private changePassUrl = 'http://localhost:8080/changePassword';
 
   constructor(private http: HttpClient) { }
 

@@ -1,41 +1,66 @@
+<!--<div class="card col-md-4 offset-4">-->
+<!--  <div class="card-body">-->
+<!--    &lt;!&ndash; Default form login &ndash;&gt;-->
+<!--    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>-->
+<!--      <p class="h4 mb-4">Sign In</p>-->
+<!--      &lt;!&ndash; Email &ndash;&gt;-->
+<!--      <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" name="username"-->
+<!--             [(ngModel)]="form.username" #username="ngModel" required-->
+<!--             value="" placeholder="Username">-->
+<!--      &lt;!&ndash; Password &ndash;&gt;-->
+<!--      <div class="form-group">-->
+<!--        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4"-->
+<!--               name="password" [(ngModel)]="form.password" #password="ngModel"-->
+<!--               required minlength="6" placeholder="Password">-->
+<!--        <div *ngIf="f.submitted && password.invalid">-->
+<!--          <div *ngIf="password.errors.required">Password is required</div>-->
+<!--          <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="d-flex justify-content-around">-->
+<!--        &lt;!&ndash; Remember me &ndash;&gt;-->
+<!--        <div>-->
+<!--          <div class="custom-control custom-checkbox">-->
+<!--            <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">-->
+<!--            <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Forgot password &ndash;&gt;-->
+<!--        <div>-->
+<!--          <a routerLink="#">Forgot password?</a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; Sign in button &ndash;&gt;-->
+<!--      <div class="form-group">-->
+<!--        <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; Register &ndash;&gt;-->
+<!--      <p>Not a member?-->
+<!--        <a routerLink="/auth/register">Register</a>-->
+<!--      </p>-->
+<!--    </form>-->
+<!--    &lt;!&ndash; Default form login &ndash;&gt;-->
+<!--  </div>-->
+<!--</div>-->
+
 <div class="card col-md-4 offset-4">
   <div class="card-body">
-    <!-- Default form login -->
+    <h2>Login</h2>
     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-
-      <p class="h4 mb-4">Sign in</p>
-
-      <!-- Email -->
-      <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" name="username"
-             [(ngModel)]="form.username" #username="ngModel" required
-             value="" placeholder="username">
-
-      <!-- Password -->
       <div class="form-group">
-        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" name="password"
-               [(ngModel)]="form.password" #password="ngModel" required minlength="6"
-               placeholder="password">
+        <input type="email" class="form-control mb-4" name="username"
+               [(ngModel)]="form.username" #username="ngModel" required
+               value="" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control mb-4"
+               name="password" [(ngModel)]="form.password" #password="ngModel"
+               required minlength="6" placeholder="Password">
         <div *ngIf="f.submitted && password.invalid">
           <div *ngIf="password.errors.required">Password is required</div>
           <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
         </div>
       </div>
-
-      <div class="d-flex justify-content-around">
-        <div>
-          <!-- Remember me -->
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-            <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
-          </div>
-        </div>
-        <div>
-          <!-- Forgot password -->
-          <a routerLink="#">Forgot password?</a>
-        </div>
-      </div>
-
-      <!-- Sign in button -->
       <div class="form-group">
         <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
       </div>
@@ -44,7 +69,6 @@
         <a routerLink="/auth/register">Register</a>
       </p>
     </form>
-    <!-- Default form login -->
   </div>
 </div>
 

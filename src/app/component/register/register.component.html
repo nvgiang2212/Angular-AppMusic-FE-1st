@@ -2,16 +2,15 @@
   <div class="card-body">
     <div id="loginbox" class="mainbox">
       <div class="panel panel-info">
-
         <div class="panel-heading">
           <div class="panel-title offset-4"><h2>Register</h2></div>
           <hr>
-          <div style="float:right; font-size: 80%; position: relative; top:-10px">
-            <a routerLink="/auth/login">You haved accout. Login Now</a></div>
-        </div> <!--Header-->
-
+          <div style="text-align: center; position: relative; top:-5px">
+            You haved account. <a routerLink="/auth/login">Login Now</a></div>
+        </div>
+        <!--Header-->
         <div class="panel-body" style="padding-top:30px">
-          <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+          <div style="display:none" id="login-alert" class="text-center alert alert-danger"></div>
           <form class="form-inline" name="form" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>
             <div *ngIf="isRegister; else signupForm">
               <p class="message-signup" style="color: limegreen">Your registration is successful. Please login!</p>
@@ -19,9 +18,8 @@
 
             <ng-template #signupForm>
               <form name="form" (ngSubmit)="f.form.valid && RegisterAccount()" #f="ngForm" novalidate>
-                <div style="margin-bottom: 25px" class="form-group">
-
-                  <input type="text" class="form-control"
+                <div style="margin-bottom: 20px" class="form-group">
+                  <input type="text" class="form-control" style="width: 360px"
                          name="firstName" placeholder="First Name"
                          [(ngModel)]="form.firstName"
                          #firstName="ngModel" required/>
@@ -30,9 +28,8 @@
                   </div>
                 </div>
 
-                <div style="margin-bottom: 25px" class="form-group">
-
-                  <input type="text" class="form-control"
+                <div style="margin-bottom: 20px" class="form-group">
+                  <input type="text" class="form-control" style="width: 360px"
                          name="lastName" placeholder="Last Name"
                          [(ngModel)]="form.lastName" #lastName="ngModel" required/>
                   <div *ngIf="f.submitted && lastName.invalid">
@@ -40,8 +37,8 @@
                   </div>
                 </div>
 
-                <div style="margin-bottom: 25px" class="form-group">
-                  <input type="text" class="form-control"
+                <div style="margin-bottom: 20px" class="form-group">
+                  <input type="text" class="form-control" style="width: 360px"
                          name="username" placeholder="User Name"
                          [(ngModel)]="form.username" #username="ngModel" required/>
                   <div *ngIf="f.submitted && username.invalid">
@@ -49,8 +46,8 @@
                   </div>
                 </div>
 
-                <div style="margin-bottom: 25px" class="form-group">
-                  <input type="text" class="form-control"
+                <div style="margin-bottom: 20px" class="form-group">
+                  <input type="text" class="form-control" style="width: 360px"
                          name="email" placeholder="Email"
                          [(ngModel)]="form.email" #email="ngModel" required email/>
                   <div *ngIf="f.submitted && email.invalid">
@@ -60,7 +57,7 @@
                 </div>
 
                 <div style="margin-bottom: 25px" class="form-group">
-                  <input type="password" class="form-control"
+                  <input type="password" class="input-group-text" style="width: 360px"
                          name="password" placeholder="Password"
                          [(ngModel)]="form.password" #password="ngModel"
                          required minlength="6"/>
@@ -70,24 +67,14 @@
                   </div>
                 </div>
 
-
-                <!-- <div style="margin-bottom: 25px" class="form-group">-->
-                <!-- <input type="file" (change)="selecAvatar($event)" placeholder="Choose Avatar">-->
-                <!-- <button type="button" class="btn btn-success" (click)="upload()">Save</button>-->
-                <!-- </div> &lt;!&ndash;Choose Avatar&ndash;&gt;-->
-
-
                 <div class="form-group">
                   <button class="btn btn-info btn-block my-4" type="submit">Register</button>
                 </div>
               </form>
             </ng-template>
-
           </form>
         </div>
-        <!--Body-->
       </div>
-
     </div>
   </div>
 </div>
