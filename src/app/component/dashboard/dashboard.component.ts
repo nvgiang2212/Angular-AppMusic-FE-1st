@@ -9,19 +9,18 @@ import {UserService} from '../../service/UserManager/user.service';
 })
 export class DashboardComponent implements OnInit {
 
-  userInfor: UpdateInfo;
+  userInfor: string;
   errorMessage: string;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     const name = sessionStorage.getItem('AuthUsername');
     this.userService
-      .getUser(name)
+      .getUserBoard(name)
       .subscribe(
         data => { this.userInfor = data; },
         error => {this.userInfor = null; }
       );
-
   }
 
 }

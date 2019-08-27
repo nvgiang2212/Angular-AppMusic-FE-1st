@@ -14,6 +14,8 @@ import {httpInterceptorProviders} from './service/UserManager/auth-interceptor';
 import { ContentComponent } from './component/content/content.component';
 import { HeaderComponent } from './component/header/header.component';
 import { UserComponent } from './component/user/user.component';
+import { AdminComponent } from './component/admin/admin.component';
+import { PmComponent } from './component/pm/pm.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { UserComponent } from './component/user/user.component';
     ChangePassComponent,
     ContentComponent,
     HeaderComponent,
-    UserComponent
+    UserComponent,
+    AdminComponent,
+    PmComponent
   ],
   imports: [
     BrowserModule,

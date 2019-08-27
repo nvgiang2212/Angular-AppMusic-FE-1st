@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {LoginInfo} from '../../model/UserManager/Login-Infor';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import {AuthLoginInfo} from '../../model/UserManager/Login-Infor';
 import {JwtResponse} from '../../model/jwt-response';
-import {RegisterInfo} from '../../model/UserManager/Register-Infor';
-import {UpdateInfo} from '../../model/UserManager/Update-Infor';
-import {ChangePassword} from '../../model/UserManager/ChangPass-Infor';
+import {SignUpInfo} from '../../model/UserManager/Signup-Infor';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,26 +14,17 @@ const httpOptions = {
 })
 export class AuthService {
 
-  private loginUrl = 'http://localhost:8080/login';
-  private registerUrl = 'http://localhost:8080/signup';
-  private updateProfileUrl = 'http://localhost:8080/updateuser';
-  private changePassUrl = 'http://localhost:8080/changePassword';
+  private loginUrl = 'http://localhost:8080/api/auth/signin';
+  private signupUrl = 'http://localhost:8080/api/auth/signup';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  loginAuth(credentials: LoginInfo): Observable<JwtResponse> {
+  attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
     return this.http.post<JwtResponse>(this.loginUrl, credentials, httpOptions);
   }
 
-  registerAuth(info: RegisterInfo): Observable<string> {
-    return this.http.post<string>(this.registerUrl, info, httpOptions);
-  }
-
-  updateAuth(info: UpdateInfo): Observable<JwtResponse> {
-    return this.http.put<JwtResponse>(this.updateProfileUrl, info, httpOptions);
-  }
-
-  changePasswordAuth(info: ChangePassword): Observable<JwtResponse> {
-    return this.http.put<JwtResponse>(this.changePassUrl, info, httpOptions);
+  signUp(info: SignUpInfo): Observable<string> {
+    return this.http.post<string>(this.signupUrl, info, httpOptions);
   }
 }

@@ -1,22 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../service/UserManager/user.service';
-import {TokenStorageService} from '../../service/UserManager/token-storage.service';
-import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  selector: 'app-pm',
+  templateUrl: './pm.component.html',
+  styleUrls: ['./pm.component.scss']
 })
-export class UserComponent implements OnInit {
+export class PmComponent implements OnInit {
+
   board: string;
   errorMessage: string;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    // @ts-ignore
-    this.userService.getUserBoard().subscribe(
+    this.userService.getPMBoard().subscribe(
       data => {
         this.board = data;
       },

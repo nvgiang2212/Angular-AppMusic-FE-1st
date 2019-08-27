@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {LoginInfo} from '../../model/UserManager/Login-Infor';
+import {AuthLoginInfo} from '../../model/UserManager/Login-Infor';
 import {AuthService} from '../../service/UserManager/auth.service';
 import {TokenStorageService} from '../../service/UserManager/token-storage.service';
 
@@ -15,13 +14,9 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  private logininfor: LoginInfo;
+  private loginInfo: AuthLoginInfo;
 
-  constructor(
-    private authService: AuthService,
-    private tokenStorage: TokenStorageService,
-    private router: Router) {
-  }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
@@ -31,34 +26,33 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    // tslint:disable-next-line:no-debugger
-    debugger;
     console.log(this.form);
-    this.logininfor = new LoginInfo(
+
+    this.loginInfo = new AuthLoginInfo(
       this.form.username,
       this.form.password);
 
-    this.authService
-      .loginAuth(this.logininfor)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.tokenStorage.saveToken(data.accessToken);
-          this.tokenStorage.saveUsername(data.username);
-          this.tokenStorage.saveAvatar(data.avatarUrl);
-          this.tokenStorage.saveAuthorities(data.authorities);
+    this.authService.attemptAuth(this.loginInfo).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUsername(data.username);
+        this.tokenStorage.saveAuthorities(data.authorities);
 
-          this.isLoginFailed = false;
-          this.isLoggedIn = true;
-          this.roles = this.tokenStorage.getAuthorities();
-          window.location.reload();
-        },
-        error => {
-          console.log(error);
-          this.errorMessage = error.error.message;
-          this.isLoginFailed = true;
-        });
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getAuthorities();
+        this.reloadPage();
+      },
+      error => {
+        console.log(error);
+        this.errorMessage = error.error.message;
+        this.isLoginFailed = true;
+      }
+    );
   }
 
+  reloadPage() {
+    window.location.reload();
+  }
 }
 
