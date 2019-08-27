@@ -4,7 +4,7 @@ import {TokenStorageService} from '../../service/UserManager/token-storage.servi
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css']
+  styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
   info: any;

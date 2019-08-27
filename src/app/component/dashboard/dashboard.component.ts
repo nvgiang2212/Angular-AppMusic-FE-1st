@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {UpdateInfo} from '../../model/UserManager/Update-Infor';
 import {UserService} from '../../service/UserManager/user.service';
 
 @Component({
